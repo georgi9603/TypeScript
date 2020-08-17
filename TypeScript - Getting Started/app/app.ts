@@ -1,34 +1,19 @@
-function startGame() {
-  let playerName: string | undefined = getInputValue("playername");
-  logPlayer(playerName);
+/// <reference path="player.ts" />
+/// <reference path="game.ts" />
 
-  postScore(80, playerName);
-}
+let newGame: Game;
 
-function logPlayer(name: string = "MultiMath Player"): void {
-  console.log(`New game starting for player: ${name}`);
-}
+document.getElementById("startGame")!.addEventListener("click", () => {
+  const player: Player = new Player();
+  player.name = Utility.getInputValue("playername");
 
-function getInputValue(elementID: string): string | undefined {
-  const inputElement: HTMLInputElement = <HTMLInputElement>(
-    document.getElementById(elementID)
-  );
+  const problemCount: number = Number(Utility.getInputValue("problemCount"));
+  const factor: number = Number(Utility.getInputValue("factor"));
 
-  if (inputElement.value === "") {
-    return undefined;
-  } else {
-    return inputElement.value;
-  }
-}
+  newGame = new Game(player, problemCount, factor);
+  newGame.displayGame();
+});
 
-function postScore(
-  score: number,
-  playerName: string = "MultiMath Player"
-): void {
-  const scoreElement: HTMLElement | null = document.getElementById(
-    "postedScores"
-  );
-  scoreElement!.innerText = `${score} - ${playerName}`;
-}
-
-document.getElementById("startGame")!.addEventListener("click", startGame);
+document.getElementById("calculate")!.addEventListener("clicl", () => {
+  newGame.calculateScore();
+});
