@@ -14,6 +14,6 @@ document.getElementById("startGame")!.addEventListener("click", () => {
   newGame.displayGame();
 });
 
-document.getElementById("calculate")!.addEventListener("clicl", () => {
+document.getElementById("calculate")!.addEventListener("click", () => {
   newGame.calculateScore();
 });

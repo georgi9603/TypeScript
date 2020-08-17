@@ -95,7 +95,7 @@ document.getElementById("startGame").addEventListener("click", function () {
     newGame = new Game(player, problemCount, factor);
     newGame.displayGame();
 });
-document.getElementById("calculate").addEventListener("clicl", function () {
+document.getElementById("calculate").addEventListener("click", function () {
     newGame.calculateScore();
 });
 //# sourceMappingURL=app.js.map
